@@ -1,0 +1,51 @@
+{% extends "blog/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+   <h1>welcome {{ user.username }} to your profile page  </h1>
+
+
+   <div class="content-section">
+     <div class="media">
+       <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+       <div class="media-body">
+         <h2 class="account-heading">{{ user.username }}</h2>
+         <p class="text-secondary">{{ user.email }}</p>
+
+
+
+           <form class="" method="post" enctype="multipart/form-data">
+             {% csrf_token %}
+             <fieldset class="form-group">
+               <legend class="border-bottom mb-4"> Update Here </legend>
+               {{ r_form|crispy }}
+               {{ p_form|crispy }}
+
+             </fieldset>
+             <div class="form-group">
+               <button class="btn btn-outline-info" type="submit" name="button">Update</button>
+             </div>
+           </form>
+
+         </div>
+       </div>
+     </div>
+     <!-- FORM HERE -->
+
+
+
+
+
+    <!-- {% for post in posts %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ post.author }}</a>
+          <small class="text-muted">{{ post.date_posted|date:"j l,F, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.content }}</p>
+      </div>
+    </article>
+{% endfor %} -->
+
+{% endblock  %}
